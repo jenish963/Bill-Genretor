@@ -2,9 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgb(117 113 191) 0%, rgb(255 0 0) 0%, rgb(70 33 70) 100%);
+  font-size: larger;
 }
 
 @media (prefers-reduced-motion: no-preference) {
