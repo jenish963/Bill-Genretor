@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-// import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@mui/material';
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf';
-// import ReactToPrint from 'react-to-print';
 import { Cabinet, CoolingSystem, Graphics, Monitor, Motherboard, OS, Power, Processor, Ram, UPs, SSD, HDD } from './Array';
 
 const PDF = () => {
@@ -233,8 +231,6 @@ const PDF = () => {
         <Button variant="contained" sx={{backgroundColor:"#ff0303de", boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 23%), 0px 2px 2px 0px #f8f9fa, 0px 1px 5px 0px rgb(255 54 54 / 12%)", color:"rgb(0 0 0 / 87%)", marginBottom:"5px"}} onClick={handleShare}>
         SHARE
         </Button>
-            {/* <button onClick={handlePrint}>Export as a PDF</button>
-            <button onClick={handleShare}>SHARE</button> */}
         </div>
         </div>
     )

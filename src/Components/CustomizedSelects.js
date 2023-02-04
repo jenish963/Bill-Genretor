@@ -97,8 +97,6 @@ const navigate = useNavigate()
     backgroundColor: "#242424"
     }}
     >
-    {/* <Grid container spacing={3}>
-      <Grid item xs={12} sm={6}> */}
       <div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -119,8 +117,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={12} sm={6}> */}
       <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>Motherboard</b></FormLabel>
         <Select
@@ -139,8 +135,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
     </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -161,8 +155,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
     <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>SSD</b></FormLabel>
         <Select
@@ -181,8 +173,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
     </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -222,8 +212,6 @@ const navigate = useNavigate()
           <MenuItem sx={{width: "40px", whiteSpace:"normal", font: "menu"}} value="4">4</MenuItem>
           </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={12} sm={6}> */}
       <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>HDD</b></FormLabel>
         <Select
@@ -261,8 +249,6 @@ const navigate = useNavigate()
           <MenuItem sx={{width: "40px", whiteSpace:"normal", font: "menu"}} value="4">4</MenuItem>
           </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={12} sm={6}> */}
     </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -283,8 +269,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
       <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>Power</b></FormLabel>
         <Select
@@ -303,8 +287,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
     </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -325,8 +307,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={6} sm={3}> */}
       <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>Monitor</b></FormLabel>
         <Select
@@ -345,8 +325,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={12} sm={6}> */}
     </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -367,8 +345,6 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid item xs={12} sm={6}> */}
       <FormControl sx={{ m: 1, minWidth: 120 }}>
       <FormLabel sx={{color:'white', alignSelf:"baseline"}}><b>UPs</b></FormLabel>
         <Select
@@ -387,18 +363,11 @@ const navigate = useNavigate()
            ))}
         </Select>
       </FormControl>
-    {/* </Grid>
-    <Grid  item xs={12}> */}
       </div>
       <div>
-    {/* <Button variant="contained" sx={{backgroundColor:"#ff0303de", boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 23%), 0px 2px 2px 0px #f8f9fa, 0px 1px 5px 0px rgb(255 54 54 / 12%)", color:"rgb(0 0 0 / 87%)", marginBottom:"5px"}} onClick={() => navigate(`/Bill`, {state})}>
-        VIEW
-    </Button> */}
     <Button variant="contained" sx={{backgroundColor:"#ff0303de", boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 23%), 0px 2px 2px 0px #f8f9fa, 0px 1px 5px 0px rgb(255 54 54 / 12%)", color:"rgb(0 0 0 / 87%)", marginBottom:"5px"}} onClick={() => navigate(`/Bill1`, {state})}>
         VIEW IN TABLE
     </Button>
-    {/* </Grid>
-    </Grid> */}
     </div>
     </div>
     </Card>
