@@ -1,101 +1,244 @@
-import { Table, TableCell, TableRow } from '@mui/material'
-import React from 'react'
-import { Document, Page } from 'react-pdf'
+import React, { useState } from 'react'
+// import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Button } from '@mui/material';
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf';
+// import ReactToPrint from 'react-to-print';
 import { Cabinet, CoolingSystem, Graphics, Monitor, Motherboard, OS, Power, Processor, Ram, UPs, SSD, HDD } from './Array';
 
-function PDF(props) {
-    return (
-        <Document file="Bill.pdf">
-            <Page>
-                <Table>
-                    <TableRow>
-                        <TableCell>ITEMS</TableCell>
-                        <TableCell>MODEL</TableCell>
-                        <TableCell>RATE</TableCell>
-                    </TableRow>
-                    <TableRow key={1}>
-                        <TableCell>Processor</TableCell>
-                        {props.data.Processor !== "" && <><TableCell>{Processor.find(obj => obj.id === props.data.Processor).Processor}</TableCell>
-                            <TableCell>{Processor.find(obj => obj.id === props.data.Processor).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={2}>
-                        <TableCell>Motherboard</TableCell>
-                        {props.data.Motherboard !== "" && <><TableCell>{Motherboard.find(obj => obj.id === props.data.Motherboard).Motherboard}</TableCell>
-                            <TableCell>{Motherboard.find(obj => obj.id === props.data.Motherboard).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={3}>
-                        <TableCell>CoolingSystem</TableCell>
-                        {props.data.CoolingSystem !== "" && <><TableCell>{CoolingSystem.find(obj => obj.id === props.data.CoolingSystem).CoolingSystem}</TableCell>
-                            <TableCell>{CoolingSystem.find(obj => obj.id === props.data.CoolingSystem).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={4}>
-                        <TableCell>Ram</TableCell>
-                        {props.data.Ram !== "" && <><TableCell>{Ram.find(obj => obj.id === props.data.Ram).Ram}</TableCell>
-                            <TableCell>{Ram.find(obj => obj.id === props.data.Ram).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={5}>
-                        <TableCell>SSD</TableCell>
-                        {props.data.SSD !== "" && <><TableCell>{SSD.find(obj => obj.id === props.data.SSD).SSD}</TableCell>
-                            <TableCell>{SSD.find(obj => obj.id === props.data.SSD).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={6}>
-                        <TableCell>HDD</TableCell>
-                        {props.data.HDD !== "" && <><TableCell>{HDD.find(obj => obj.id === props.data.HDD).HDD}</TableCell>
-                            <TableCell>{HDD.find(obj => obj.id === props.data.HDD).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={7}>
-                        <TableCell>Graphics</TableCell>
-                        {props.data.Graphics !== "" && <><TableCell>{Graphics.find(obj => obj.id === props.data.Graphics).Graphics}</TableCell>
-                            <TableCell>{Graphics.find(obj => obj.id === props.data.Graphics).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={8}>
-                        <TableCell>Power</TableCell>
-                        {props.data.Power !== "" && <><TableCell>{Power.find(obj => obj.id === props.data.Power).Power}</TableCell>
-                            <TableCell>{Power.find(obj => obj.id === props.data.Power).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={9}>
-                        <TableCell>Cabinet</TableCell>
-                        {props.data.Cabinet !== "" && <><TableCell>{Cabinet.find(obj => obj.id === props.data.Cabinet).Cabinet}</TableCell>
-                            <TableCell>{Cabinet.find(obj => obj.id === props.data.Cabinet).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={10}>
-                        <TableCell>Monitor</TableCell>
-                        {props.data.Monitor !== "" && <><TableCell>{Monitor.find(obj => obj.id === props.data.Monitor).Monitor}</TableCell>
-                            <TableCell>{Monitor.find(obj => obj.id === props.data.Monitor).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={11}>
-                        <TableCell>OS</TableCell>
-                        {props.data.OS !== "" && <><TableCell>{OS.find(obj => obj.id === props.data.OS).OS}</TableCell>
-                            <TableCell>{OS.find(obj => obj.id === props.data.OS).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={12}>
-                        <TableCell>UPs</TableCell>
-                        {props.data.UPs !== "" && <><TableCell>{UPs.find(obj => obj.id === props.data.UPs).UPs}</TableCell>
-                            <TableCell>{UPs.find(obj => obj.id === props.data.UPs).price}</TableCell></>}
-                    </TableRow>
-                    <TableRow key={13}>
-                        <TableCell><h4>TOTAL</h4></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell>{
-                            (props.data.Processor !== "" && Processor.find(obj => obj.id === props.data.Processor).price) +
-                            (props.data.Motherboard !== "" && Motherboard.find(obj => obj.id === props.data.Motherboard).price) +
-                            (props.data.CoolingSystem !== "" && CoolingSystem.find(obj => obj.id === props.data.CoolingSystem).price) +
-                            (props.data.Ram !== "" && Ram.find(obj => obj.id === props.data.Ram).price) +
-                            (props.data.SSD !== "" && SSD.find(obj => obj.id === props.data.SSD).price) +
-                            (props.data.HDD !== "" && HDD.find(obj => obj.id === props.data.HDD).price) +
-                            (props.data.Graphics !== "" && Graphics.find(obj => obj.id === props.data.Graphics).price) +
-                            (props.data.Power !== "" && Power.find(obj => obj.id === props.data.Power).price) +
-                            (props.data.Cabinet !== "" && Cabinet.find(obj => obj.id === props.data.Cabinet).price) +
-                            (props.data.Monitor !== "" && Monitor.find(obj => obj.id === props.data.Monitor).price) +
-                            (props.data.OS !== "" && OS.find(obj => obj.id === props.data.OS).price) +
-                            (props.data.UPs !== "" && UPs.find(obj => obj.id === props.data.UPs).price)}
-                        </TableCell>
-                    </TableRow>
-                </Table>
-            </Page>
-        </Document>
+const PDF = () => {
 
+    const { state } = useLocation();
+
+    const [pdfUrl, setPdfUrl] = useState(null);
+
+    const handlePrint = () => {
+        html2canvas(document.getElementById("rooot")).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF({
+                format:[250,500]
+            });
+            pdf.addImage(imgData, "PNG", 0, 0);
+            pdf.save("PC_Builder.pdf");
+            // setPdfUrl(pdf.output("blob"));
+            setPdfUrl(URL.createObjectURL(pdf.output("blob")));
+        });
+    };
+
+    const handleShare = () => {
+        if (pdfUrl) {
+          const url = "https://wa.me/?text=" + encodeURI("Check out this PDF: ") + pdfUrl;
+          window.open(url, "_blank");
+        }
+      };
+
+    return (
+        <div>
+        <div >
+            <table align='center' border={1} id='rooot'>
+                <thead>
+                    <tr>
+                        <td><b>ITEMS</b></td>
+                        <td><b>MODEL</b></td>
+                        <td><b>QTY</b></td>
+                        <td><b>RATE</b></td>
+                        <td><b>TOTAL AMOUNT</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr key={1}>
+                        <td>Processor</td>
+                        {state.data.Processor !== "" ?
+                            <><td>{Processor.find(obj => obj.id === state.data.Processor).Processor}</td>
+                                <td>{state.Quantity.ProcessorQty}</td>
+                                <td>{Processor.find(obj => obj.id === state.data.Processor).price}</td>
+                                <td>{Processor.find(obj => obj.id === state.data.Processor).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={2}>
+                        <td>Motherboard</td>
+                        {state.data.Motherboard !== "" ?
+                            <><td>{Motherboard.find(obj => obj.id === state.data.Motherboard).Motherboard}</td>
+                                <td>{state.Quantity.MotherboardQty}</td>
+                                <td>{Motherboard.find(obj => obj.id === state.data.Motherboard).price}</td>
+                                <td>{Motherboard.find(obj => obj.id === state.data.Motherboard).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={3}>
+                        <td>CoolingSystem</td>
+                        {state.data.CoolingSystem !== "" ?
+                            <><td>{CoolingSystem.find(obj => obj.id === state.data.CoolingSystem).CoolingSystem}</td>
+                                <td>{state.Quantity.CoolingSystemQty}</td>
+                                <td>{CoolingSystem.find(obj => obj.id === state.data.CoolingSystem).price}</td>
+                                <td>{CoolingSystem.find(obj => obj.id === state.data.CoolingSystem).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={4}>
+                        <td>Ram</td>
+                        {state.data.Ram !== "" ?
+                            <><td>{Ram.find(obj => obj.id === state.data.Ram).Ram}</td>
+                                <td>{state.Quantity.RamQty}</td>
+                                <td>{(Ram.find(obj => obj.id === state.data.Ram).price)}</td>
+                                <td>{((state.data.Ram !== "" && Ram.find(obj => obj.id === state.data.Ram).price) * (state.Quantity.RamQty !== "" && parseInt(state.Quantity.RamQty)))}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={5}>
+                        <td>SSD</td>
+                        {state.data.SSD !== "" ?
+                            <><td>{SSD.find(obj => obj.id === state.data.SSD).SSD}</td>
+                                <td>{state.Quantity.SSDQty}</td>
+                                <td>{SSD.find(obj => obj.id === state.data.SSD).price}</td>
+                                <td>{SSD.find(obj => obj.id === state.data.SSD).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={6}>
+                        <td>HDD</td>
+                        {state.data.HDD !== "" ?
+                            <><td>{HDD.find(obj => obj.id === state.data.HDD).HDD}</td>
+                                <td>{state.Quantity.HDDQty}</td>
+                                <td>{HDD.find(obj => obj.id === state.data.HDD).price}</td>
+                                <td>{((state.data.HDD !== "" && HDD.find(obj => obj.id === state.data.HDD).price) * (state.Quantity.HDDQty !== "" && parseInt(state.Quantity.HDDQty)))}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={7}>
+                        <td>Graphics</td>
+                        {state.data.Graphics !== "" ?
+                            <><td>{Graphics.find(obj => obj.id === state.data.Graphics).Graphics}</td>
+                                <td>{state.Quantity.GraphicsQty}</td>
+                                <td>{Graphics.find(obj => obj.id === state.data.Graphics).price}</td>
+                                <td>{Graphics.find(obj => obj.id === state.data.Graphics).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={8}>
+                        <td>Power</td>
+                        {state.data.Power !== "" ?
+                            <><td>{Power.find(obj => obj.id === state.data.Power).Power}</td>
+                                <td>{state.Quantity.PowerQty}</td>
+                                <td>{Power.find(obj => obj.id === state.data.Power).price}</td>
+                                <td>{Power.find(obj => obj.id === state.data.Power).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={9}>
+                        <td>Cabinet</td>
+                        {state.data.Cabinet !== "" ?
+                            <><td>{Cabinet.find(obj => obj.id === state.data.Cabinet).Cabinet}</td>
+                                <td>{state.Quantity.CabinetQty}</td>
+                                <td>{Cabinet.find(obj => obj.id === state.data.Cabinet).price}</td>
+                                <td>{Cabinet.find(obj => obj.id === state.data.Cabinet).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={10}>
+                        <td>Monitor</td>
+                        {state.data.Monitor !== "" ?
+                            <><td>{Monitor.find(obj => obj.id === state.data.Monitor).Monitor}</td>
+                                <td>{state.Quantity.MonitorQty}</td>
+                                <td>{Monitor.find(obj => obj.id === state.data.Monitor).price}</td>
+                                <td>{Monitor.find(obj => obj.id === state.data.Monitor).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={11}>
+                        <td>OS</td>
+                        {state.data.OS !== "" ?
+                            <><td>{OS.find(obj => obj.id === state.data.OS).OS}</td>
+                                <td>{state.Quantity.OSQty}</td>
+                                <td>{OS.find(obj => obj.id === state.data.OS).price}</td>
+                                <td>{OS.find(obj => obj.id === state.data.OS).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={12}>
+                        <td>UPs</td>
+                        {state.data.UPs !== "" ?
+                            <><td>{UPs.find(obj => obj.id === state.data.UPs).UPs}</td>
+                                <td>{state.Quantity.UPsQty}</td>
+                                <td>{UPs.find(obj => obj.id === state.data.UPs).price}</td>
+                                <td>{UPs.find(obj => obj.id === state.data.UPs).price}</td></> :
+                            <>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td></>}
+                    </tr>
+                    <tr key={13}>
+                        <td><h4>TOTAL</h4></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{
+                            (state.data.Processor !== "" && Processor.find(obj => obj.id === state.data.Processor).price) +
+                            (state.data.Motherboard !== "" && Motherboard.find(obj => obj.id === state.data.Motherboard).price) +
+                            (state.data.CoolingSystem !== "" && CoolingSystem.find(obj => obj.id === state.data.CoolingSystem).price) +
+                            ((state.data.Ram !== "" && Ram.find(obj => obj.id === state.data.Ram).price) * (state.Quantity.RamQty !== "" && parseInt(state.Quantity.RamQty))) +
+                            (state.data.SSD !== "" && SSD.find(obj => obj.id === state.data.SSD).price) +
+                            ((state.data.HDD !== "" && HDD.find(obj => obj.id === state.data.HDD).price) * (state.Quantity.HDDQty !== "" && parseInt(state.Quantity.HDDQty))) +
+                            (state.data.Graphics !== "" && Graphics.find(obj => obj.id === state.data.Graphics).price) +
+                            (state.data.Power !== "" && Power.find(obj => obj.id === state.data.Power).price) +
+                            (state.data.Cabinet !== "" && Cabinet.find(obj => obj.id === state.data.Cabinet).price) +
+                            (state.data.Monitor !== "" && Monitor.find(obj => obj.id === state.data.Monitor).price) +
+                            (state.data.OS !== "" && OS.find(obj => obj.id === state.data.OS).price) +
+                            (state.data.UPs !== "" && UPs.find(obj => obj.id === state.data.UPs).price)}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div className="but">
+        <Button variant="contained" sx={{backgroundColor:"#ff0303de", boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 23%), 0px 2px 2px 0px #f8f9fa, 0px 1px 5px 0px rgb(255 54 54 / 12%)", color:"rgb(0 0 0 / 87%)", marginBottom:"5px"}} onClick={handlePrint}>
+        Export as a PDF
+        </Button>
+        <Button variant="contained" sx={{backgroundColor:"#ff0303de", boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 23%), 0px 2px 2px 0px #f8f9fa, 0px 1px 5px 0px rgb(255 54 54 / 12%)", color:"rgb(0 0 0 / 87%)", marginBottom:"5px"}} onClick={handleShare}>
+        SHARE
+        </Button>
+            {/* <button onClick={handlePrint}>Export as a PDF</button>
+            <button onClick={handleShare}>SHARE</button> */}
+        </div>
+        </div>
     )
 }
 
-export default PDF
+
+export default PDF;
